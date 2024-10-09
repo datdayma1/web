@@ -1,3 +1,8 @@
+<?php
+// Giả sử bạn đã lấy dữ liệu sinh viên và lớp từ SQL Server trong Controller
+$sv = $controller->getSinhVienById($_GET['id']); // Lấy sinh viên theo id
+$lops = $controller->getLops(); // Lấy danh sách lớp
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +20,7 @@
         <form method="post" action="index.php?action=suaSV&id=<?= $sv['ma_sv'];?>" class="needs-validation">
             <div class="form-group">
                 <label for="ten_sv">Tên sinh viên:</label>
-                <input type="text" class="form-control" id="ten_sv" name="ten_sv" value="<?= $sv['ten_sv']; ?>" required>
+                <input type="text" class="form-control" id="ten_sv" name="ten_sv" value="<?= htmlspecialchars($sv['ten_sv']); ?>" required>
                 <div class="invalid-feedback">Vui lòng nhập tên sinh viên.</div>
             </div>
             <div class="form-group">
