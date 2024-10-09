@@ -1,3 +1,7 @@
+<?php
+// Gọi hàm getLops từ Controller để lấy danh sách lớp
+$lops = $controller->getLops();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +36,7 @@
                 <label for="ma_lop">Lớp:</label>
                 <select class="form-control" id="ma_lop" name="ma_lop">
                     <?php foreach ($lops as $lop): ?>
-                    <option value="<?= $lop['ma_lop'] ?>"><?= $lop['ten_lop'] ?></option>
+                        <option value="<?= $lop['ma_lop'] ?>"><?= $lop['ten_lop'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
