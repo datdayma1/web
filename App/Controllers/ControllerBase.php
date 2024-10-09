@@ -13,6 +13,7 @@ class ControllerBase {
         $dssv = $dssv->getsvbylop();
         $this->render('index', ['dssv' => $dssv]);
     }
+
     public function create() {
         $lop = new Lop();
         $lops = $lop->getlop();
@@ -74,3 +75,4 @@ class ControllerBase {
         }
     }
 }
+?>
