@@ -9,7 +9,7 @@ class DB {
         $this->serverName = "thi.database.windows.net";  // Thay đổi tên server (có thể là IP address hoặc tên server)
         $this->connectionInfo = array(
             "Database" => "sinhvien",    // Tên database
-            "UID" => "thi.database.windows.net",                 // Tài khoản SQL Server
+            "UID" => "thi",                 // Tài khoản SQL Server
             "PWD" => "@A123456",      // Mật khẩu
             "CharacterSet" => "UTF-8"      // Đảm bảo sử dụng UTF-8
         );
