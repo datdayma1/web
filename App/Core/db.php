@@ -1,39 +1,20 @@
 <?php 
-class DB {
+class DB{
     public $db;
-    protected $serverName;
-    protected $connectionInfo;
+    protected $localhost;
+    protected $username;
+    protected $password;
+    protected $dbname;
 
-    public function __construct() {
-        // Thay đổi thông tin kết nối để phù hợp với SQL Server
-        $this->serverName = "thi.database.windows.net";  // Thay đổi tên server (có thể là IP address hoặc tên server)
-        $this->connectionInfo = array(
-            "Database" => "sinhvien",    // Tên database
-            "UID" => "thi",                 // Tài khoản SQL Server
-            "PWD" => "@A123456",      // Mật khẩu
-            "CharacterSet" => "UTF-8"      // Đảm bảo sử dụng UTF-8
-        );
-
-        // Kết nối với SQL Server
-        $this->db = sqlsrv_connect($this->serverName, $this->connectionInfo);
-
-        // Kiểm tra kết nối
-        if($this->db === false) {
-            die(print_r(sqlsrv_errors(), true));
+    public function __construct(){
+        $this->localhost = "thi.database.windows.net";
+        $this->username = "thi";
+        $this->password = "@A123456";
+        $this->dbname = "sinhvien";
+        $this->db = new mysqli($this->localhost, $this->username, $this->password, $this->dbname);
+        if($this->db->connect_error){
+            die("Connection failed: ". $this->db->connect_error);
         }
-    }
-
-    // Bạn có thể tạo các phương thức khác để xử lý truy vấn, đóng kết nối, vv.
-    public function query($sql, $params = array()) {
-        $stmt = sqlsrv_query($this->db, $sql, $params);
-        if($stmt === false) {
-            die(print_r(sqlsrv_errors(), true));
-        }
-        return $stmt;
-    }
-
-    // Đóng kết nối
-    public function close() {
-        sqlsrv_close($this->db);
+        mysqli_set_charset($this->db, 'utf8');
     }
 }
