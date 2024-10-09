@@ -1,3 +1,8 @@
+<?php
+// Giả sử bạn đã gọi phương thức getDanhSachSinhVien trong Controller để lấy danh sách sinh viên
+$dssv = $controller->getDanhSachSinhVien();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -76,7 +81,7 @@
                 <tr>
                     <td><?php echo $stt; ?></td>
                     <td><?php echo $sv['ten_sv']; ?></td>
-                    <td><?php echo $sv['ngaysinh']; ?></td>
+                    <td><?php echo $sv['ngaysinh']->format('Y-m-d'); ?></td> <!-- SQL Server trả về dạng datetime -->
                     <td><?php echo $sv['gioitinh']; ?></td>
                     <td><?php echo $sv['ten_lop']; ?></td>
                     <td><a href="index.php?action=edit&id=<?php echo $sv['ma_sv']; ?>">Sửa</a></td>
