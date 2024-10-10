@@ -1,6 +1,6 @@
 <?php
 
-echo "a";
+echo "test thành công";
 
 class DB{
     public $db;
