@@ -63,4 +63,4 @@ jobs:
           app-name: 'dammay'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_68BCD80CFA064A04BAE2AB5401FA15D4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8079662CEB014B2F849275DA65E20B5E }}
