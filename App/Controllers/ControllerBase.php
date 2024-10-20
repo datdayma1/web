@@ -1,83 +1,4 @@
-// <?php 
-// require_once 'App/Models/SinhVien.php';
-// require_once 'App/Models/Lop.php';
-
-// class ControllerBase {
-//     public function render($view, $params = []) {
-//         extract($params);
-//         require_once 'App/Views/'.$view.'.php';
-//     }
-
-//     public function index() {
-//         $dssv = new SinhVien();
-//         $dssv = $dssv->getsvbylop();
-//         $this->render('index', ['dssv' => $dssv]);
-//     }
-
-//     public function create() {
-//         $lop = new Lop();
-//         $lops = $lop->getlop();
-//         $this->render('create', ['lops' => $lops]);
-//     }
-
-//     public function themSV(){
-//         if(isset($_POST['ten_sv']) && $_POST['ngaysinh'] && $_POST['gioitinh'] && ($_POST['ma_lop']))
-//         {
-//             $ten_sv = $_POST['ten_sv'];
-//             $ngaysinh = $_POST['ngaysinh'];
-//             $gioitinh = $_POST['gioitinh'];
-//             $ma_lop = $_POST['ma_lop'];
-//             $sv = new SinhVien();
-//             if($sv->themSV($ten_sv, $ngaysinh, $gioitinh, $ma_lop)){
-//                 header("Location: index.php");
-//                 exit();
-//             } else {
-//                 echo "Đã xảy ra lỗi khi thêm sinh viên!";
-//             }
-            
-//         }
-//     }
-
-//     public function edit($id) {
-//         $lop = new Lop();
-//         $lops = $lop->getlop();
-//         $sv = new SinhVien();
-//         $sv = $sv->getsvbyid($id);
-//         $sv = !empty($sv) ? $sv[0] : null;
-//         $this->render('edit', ['sv' => $sv, 'lops' => $lops]);
-//     }
-
-//     public function suaSV($id){
-//         if(isset($_POST['ten_sv']) && $_POST['ngaysinh'] && $_POST['gioitinh'] && ($_POST['ma_lop']))
-//         {
-//             $ten_sv = $_POST['ten_sv'];
-//             $ngaysinh = $_POST['ngaysinh'];
-//             $gioitinh = $_POST['gioitinh'];
-//             $ma_lop = $_POST['ma_lop'];
-//             $sv = new SinhVien();
-//             if($sv->suaSV($id, $ten_sv, $ngaysinh, $gioitinh, $ma_lop)){
-//                 header("Location: index.php");
-//                 exit();
-//             } else {
-//                 echo "Đã xảy ra lỗi khi sửa sinh viên!";
-//             }
-            
-//         }
-//     }
-    
-
-
-//     public function XoaSV($id){
-//         $sv = new SinhVien();
-//         if($sv->xoaSV($id)){
-//             header("Location: index.php");
-//             exit();
-//         } else {
-//             echo "Đã xảy ra lỗi khi xóa sinh viên!";
-//         }
-//     }
-// }
-
+<?php 
 require_once 'App/Models/SinhVien.php';
 require_once 'App/Models/Lop.php';
 
@@ -93,77 +14,62 @@ class ControllerBase {
         $this->render('index', ['dssv' => $dssv]);
     }
 
-    public function create() {
-        $lop = new Lop();
-        $lops = $lop->getlop();
-        $this->render('create', ['lops' => $lops]);
-    }
+    // public function create() {
+    //     $lop = new Lop();
+    //     $lops = $lop->getlop();
+    //     $this->render('create', ['lops' => $lops]);
+    // }
 
     public function themSV(){
-        // Kiểm tra phương thức HTTP
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Kiểm tra dữ liệu từ form
-            if (!empty($_POST['ten_sv']) && !empty($_POST['ngaysinh']) && !empty($_POST['gioitinh']) && !empty($_POST['ma_lop'])) {
-                // Làm sạch dữ liệu
-                $ten_sv = htmlspecialchars(trim($_POST['ten_sv']));
-                $ngaysinh = htmlspecialchars(trim($_POST['ngaysinh']));
-                $gioitinh = htmlspecialchars(trim($_POST['gioitinh']));
-                $ma_lop = htmlspecialchars(trim($_POST['ma_lop']));
-
-                $sv = new SinhVien();
-                if ($sv->themSV($ten_sv, $ngaysinh, $gioitinh, $ma_lop)) {
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    echo "Đã xảy ra lỗi khi thêm sinh viên!";
-                }
+        if(isset($_POST['ten_sv']) && $_POST['ngaysinh'] && $_POST['gioitinh'] && ($_POST['ma_lop']))
+        {
+            $ten_sv = $_POST['ten_sv'];
+            $ngaysinh = $_POST['ngaysinh'];
+            $gioitinh = $_POST['gioitinh'];
+            $ma_lop = $_POST['ma_lop'];
+            $sv = new SinhVien();
+            if($sv->themSV($ten_sv, $ngaysinh, $gioitinh, $ma_lop)){
+                header("Location: index.php");
+                exit();
             } else {
-                echo "Vui lòng điền đầy đủ thông tin.";
+                echo "Đã xảy ra lỗi khi thêm sinh viên!";
             }
-        } else {
-            echo "Yêu cầu không hợp lệ.";
+            
         }
     }
 
-    public function edit($id) {
-        $lop = new Lop();
-        $lops = $lop->getlop();
-        $sv = new SinhVien();
-        $sv = $sv->getsvbyid($id);
-        if (!empty($sv)) {
-            $sv = $sv[0];
-            $this->render('edit', ['sv' => $sv, 'lops' => $lops]);
-        } else {
-            echo "Sinh viên không tồn tại.";
-        }
-    }
+    // public function edit($id) {
+    //     $lop = new Lop();
+    //     $lops = $lop->getlop();
+    //     $sv = new SinhVien();
+    //     $sv = $sv->getsvbyid($id);
+    //     $sv = !empty($sv) ? $sv[0] : null;
+    //     $this->render('edit', ['sv' => $sv, 'lops' => $lops]);
+    // }
 
     public function suaSV($id){
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!empty($_POST['ten_sv']) && !empty($_POST['ngaysinh']) && !empty($_POST['gioitinh']) && !empty($_POST['ma_lop'])) {
-                $ten_sv = htmlspecialchars(trim($_POST['ten_sv']));
-                $ngaysinh = htmlspecialchars(trim($_POST['ngaysinh']));
-                $gioitinh = htmlspecialchars(trim($_POST['gioitinh']));
-                $ma_lop = htmlspecialchars(trim($_POST['ma_lop']));
-
-                $sv = new SinhVien();
-                if ($sv->suaSV($id, $ten_sv, $ngaysinh, $gioitinh, $ma_lop)) {
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    echo "Đã xảy ra lỗi khi sửa sinh viên!";
-                }
+        if(isset($_POST['ten_sv']) && $_POST['ngaysinh'] && $_POST['gioitinh'] && ($_POST['ma_lop']))
+        {
+            $ten_sv = $_POST['ten_sv'];
+            $ngaysinh = $_POST['ngaysinh'];
+            $gioitinh = $_POST['gioitinh'];
+            $ma_lop = $_POST['ma_lop'];
+            $sv = new SinhVien();
+            if($sv->suaSV($id, $ten_sv, $ngaysinh, $gioitinh, $ma_lop)){
+                header("Location: index.php");
+                exit();
             } else {
-                echo "Vui lòng điền đầy đủ thông tin.";
+                echo "Đã xảy ra lỗi khi sửa sinh viên!";
             }
-        } else {
-            echo "Yêu cầu không hợp lệ.";
+            
         }
     }
+    
+
 
     public function XoaSV($id){
         $sv = new SinhVien();
-        if ($sv->xoaSV($id)) {
+        if($sv->xoaSV($id)){
             header("Location: index.php");
             exit();
         } else {
@@ -172,4 +78,6 @@ class ControllerBase {
     }
 }
 
-// ?>
+
+
+?>
