@@ -65,7 +65,7 @@ class ControllerBase {
         }
     }
 
-    public function xoaSV($id){
+    public function XoaSV($id){
         $sv = new SinhVien();
         if($sv->xoaSV($id)){
             header("Location: index.php");
