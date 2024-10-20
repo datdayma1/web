@@ -7,7 +7,7 @@ class SinhVien extends DB {
         $stmt = sqlsrv_query($this->db, $sql);
 
         if ($stmt === false) {
-            die(print_r(sqlsrv_errors(), true)); ///// Hiển thị lỗi nếu có
+            die(print_r(sqlsrv_errors(), true)); // Hiển thị lỗi nếu có
         }
 
         if (sqlsrv_has_rows($stmt)) {
