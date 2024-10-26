@@ -14,11 +14,11 @@ class ControllerBase {
         $this->render('index', ['dssv' => $dssv]);
     }
 
-    public function create() {
-        $lop = new Lop();
-        $lops = $lop->getlop();
-        $this->render('create', ['lops' => $lops]);
-    }
+    // public function create() {
+    //     $lop = new Lop();
+    //     $lops = $lop->getlop();
+    //     $this->render('create', ['lops' => $lops]);
+    // }
 
     public function themSV(){
         if(isset($_POST['ten_sv']) && $_POST['ngaysinh'] && $_POST['gioitinh'] && ($_POST['ma_lop']))
@@ -38,14 +38,14 @@ class ControllerBase {
         }
     }
 
-    public function edit($id) {
-        $lop = new Lop();
-        $lops = $lop->getlop();
-        $sv = new SinhVien();
-        $sv = $sv->getsvbyid($id);
-        $sv = !empty($sv) ? $sv[0] : null;
-        $this->render('edit', ['sv' => $sv, 'lops' => $lops]);
-    }
+    // public function edit($id) {
+    //     $lop = new Lop();
+    //     $lops = $lop->getlop();
+    //     $sv = new SinhVien();
+    //     $sv = $sv->getsvbyid($id);
+    //     $sv = !empty($sv) ? $sv[0] : null;
+    //     $this->render('edit', ['sv' => $sv, 'lops' => $lops]);
+    // }
 
     public function suaSV($id){
         if(isset($_POST['ten_sv']) && $_POST['ngaysinh'] && $_POST['gioitinh'] && ($_POST['ma_lop']))
