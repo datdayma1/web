@@ -28,18 +28,7 @@ class SinhVien extends DB {
         return $data;
     }
 
-    // public function themSV($ten_sv, $ngaysinh, $gioitinh, $ma_lop) {
-    //     $sql = "INSERT INTO tbl_sinhvien (ten_sv, ngaysinh, gioitinh, ma_lop) VALUES (?, ?, ?, ?)";
-    //     $params = [$ten_sv, $ngaysinh, $gioitinh, $ma_lop];
-    //     $stmt = sqlsrv_query($this->db, $sql, $params);
-
-    //     if ($stmt === false) {
-    //         return false;
-    //     }
-
-    //     return true;
-    // }
-     public function create($ten_sv, $ngaysinh, $gioitinh, $ma_lop) {
+    public function themSV($ten_sv, $ngaysinh, $gioitinh, $ma_lop) {
         $sql = "INSERT INTO tbl_sinhvien (ten_sv, ngaysinh, gioitinh, ma_lop) VALUES (?, ?, ?, ?)";
         $params = [$ten_sv, $ngaysinh, $gioitinh, $ma_lop];
         $stmt = sqlsrv_query($this->db, $sql, $params);
@@ -50,7 +39,7 @@ class SinhVien extends DB {
 
         return true;
     }
-
+   
     public function getsvbyid($id) {
         $sql = "SELECT * FROM tbl_sinhvien WHERE ma_sv = ?";
         $stmt = sqlsrv_query($this->db, $sql, [$id]);
@@ -69,18 +58,7 @@ class SinhVien extends DB {
         return $data;
     }
 
-    // public function suaSV($id, $ten_sv, $ngaysinh, $gioitinh, $ma_lop) {
-    //     $sql = "UPDATE tbl_sinhvien SET ten_sv = ?, ngaysinh = ?, gioitinh = ?, ma_lop = ? WHERE ma_sv = ?";
-    //     $params = [$ten_sv, $ngaysinh, $gioitinh, $ma_lop, $id];
-    //     $stmt = sqlsrv_query($this->db, $sql, $params);
-
-    //     if ($stmt === false) {
-    //         return false;
-    //     }
-
-    //     return true;
-    // }
-     public function edit($id, $ten_sv, $ngaysinh, $gioitinh, $ma_lop) {
+    public function suaSV($id, $ten_sv, $ngaysinh, $gioitinh, $ma_lop) {
         $sql = "UPDATE tbl_sinhvien SET ten_sv = ?, ngaysinh = ?, gioitinh = ?, ma_lop = ? WHERE ma_sv = ?";
         $params = [$ten_sv, $ngaysinh, $gioitinh, $ma_lop, $id];
         $stmt = sqlsrv_query($this->db, $sql, $params);
@@ -91,18 +69,9 @@ class SinhVien extends DB {
 
         return true;
     }
+   
 
-    // public function xoaSV($id) {
-    //     $sql = "DELETE FROM tbl_sinhvien WHERE ma_sv = ?";
-    //     $stmt = sqlsrv_query($this->db, $sql, [$id]);
-
-    //     if ($stmt === false) {
-    //         return false;
-    //     }
-
-    //     return true;
-    // }
-    public function delete($id) {
+    public function xoaSV($id) {
         $sql = "DELETE FROM tbl_sinhvien WHERE ma_sv = ?";
         $stmt = sqlsrv_query($this->db, $sql, [$id]);
 
@@ -112,5 +81,6 @@ class SinhVien extends DB {
 
         return true;
     }
+    
 }
 ?>
